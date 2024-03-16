@@ -1,0 +1,20 @@
+id:1
+price:999.00
+response:[{"Order ID":282,"Order Item ID":282,"Item Total Price":"999.00","Total Order Amount":"999.00"}]
+Test with id:1 for price:999.00 has run status:FINISHED
+************************
+id:2
+price:2999.00
+response:[{"Order ID":283,"Order Item ID":283,"Item Total Price":"2999.00","Total Order Amount":"2999.00"}]
+Test with id:2 for price:2999.00 has run status:FINISHED
+************************
+id:3
+price:399.00
+response:[{"Order ID":284,"Order Item ID":284,"Item Total Price":"399.00","Total Order Amount":"399.00"}]
+Test with id:3 for price:399.00 has run status:FINISHED
+************************
+id:6
+price:99.00
+response:[{"Order ID":285,"Order Item ID":285,"Item Total Price":"99.00","Total Order Amount":"99.00"}]
+Test with id:6 for price:99.00 has run status:FINISHED
+************************

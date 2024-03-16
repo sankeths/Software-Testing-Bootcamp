@@ -1,0 +1,419 @@
+---
+swagger: "2.0"
+info:
+  description: |
+    QACurry BookStore OpenAPI
+  version: 1.0.0
+  title: QACurry BookStore v
+  termsOfService: https://bookstore.qacurry.com/
+  contact:
+    email: hello@qacurry.com
+  license:
+    name: Private License
+    url: https://bookstore.qacurry.com/
+host: bookstore.qacurry.com
+basePath: /
+tags:
+- name: Application APIs
+  description: The APIs fetch data from database.
+- name: Payment API
+  description: The APIs relay information to & from the payment providers.
+schemes:
+- https
+paths:
+  /{type}/get_login/:
+    get:
+      tags:
+      - Application APIs
+      description: Login to user account
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: type
+        in: path
+        description: json or xml
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inline_response_200'
+      security:
+      - basic: []
+  /{type}/get_products/:
+    get:
+      tags:
+      - Application APIs
+      description: Get list of all products
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: type
+        in: path
+        description: json or xml
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inline_response_200_1'
+      security:
+      - basic: []
+  /{type}/get_orders/:
+    get:
+      tags:
+      - Application APIs
+      description: Get list of all orders for the user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: type
+        in: path
+        description: json or xml
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inline_response_200_2'
+      security:
+      - basic: []
+  /{type}/post_order/:
+    post:
+      tags:
+      - Application APIs
+      description: Make a new order using API
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: type
+        in: path
+        description: json or xml
+        required: true
+        type: string
+      - in: body
+        name: POSTDATA
+        description: Creates a new employee in DB
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/POSTDATA'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inline_response_200_3'
+      security:
+      - basic: []
+  /{type}/get_order/:
+    get:
+      tags:
+      - Application APIs
+      description: Get order details
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: type
+        in: path
+        description: json or xml
+        required: true
+        type: string
+      - name: order_id
+        in: query
+        description: Order Id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inline_response_200_4'
+      security:
+      - basic: []
+  /service_creditcard.php:
+    post:
+      tags:
+      - Payment API
+      description: External Service to make Creditcard payments
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: POSTDATA
+        description: Adds a payment to order.
+        required: false
+        schema:
+          $ref: '#/definitions/POSTDATA_1'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/inline_response_200_5'
+      security:
+      - basic: []
+securityDefinitions:
+  basic:
+    type: basic
+definitions:
+  inline_response_200_5:
+    type: object
+    required:
+    - Reason
+    - Status
+    - Status Code
+    properties:
+      Status:
+        type: string
+        example: Transaction Approved
+        description: Status of transaction
+      Reason:
+        type: string
+        example: Approved
+        description: Status Readon
+      Status Code:
+        type: integer
+        example: 100
+        description: Status code for the tramsaction
+  POSTDATA:
+    type: object
+    properties:
+      quantity:
+        type: integer
+        example: 1
+        description: Product Quantity
+      product_id:
+        type: integer
+        example: 1
+        description: Product Id
+  inline_response_200_1:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+        description: Product id
+      name:
+        type: string
+        example: iPhone
+        description: Product Name
+      description:
+        type: string
+        example: This is an rare iphone
+        description: Product Description
+      image:
+        type: string
+        example: iphone.jpg
+        description: Product Image
+      price:
+        type: number
+        example: 999.0
+        description: Price of the product
+      created:
+        type: string
+        example: 2018-05-05 00:00:00
+        description: Date time of creation
+      modified:
+        type: string
+        example: 2018-05-05 00:00:00
+        description: Date time of creation
+      status:
+        type: integer
+        example: 1 or 0
+        description: Status of the user
+  inline_response_200:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+        description: User id
+      name:
+        type: string
+        example: Sanketh
+        description: Users first name
+      last_name:
+        type: string
+        example: Shanbhag
+        description: Users last name
+      email:
+        type: string
+        example: hello@qacurry.com
+        description: Users email
+      phone:
+        type: integer
+        example: 112233
+        description: users phone number
+      address:
+        type: string
+        example: Bangalore, India
+        description: Users address
+  inline_response_200_2:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+        description: Order's ID
+      customer_id:
+        type: integer
+        example: 1
+        description: Customer ID
+      total_price:
+        type: number
+        example: 999.0
+        description: Total Order Price
+      status:
+        type: integer
+        example: 0
+        description: Status of the order for internal use.
+      order_id:
+        type: integer
+        example: 1
+        description: Order ID
+      quantity:
+        type: integer
+        example: 1
+        description: Quantity
+      price:
+        type: number
+        example: 1.0
+        description: Price of the product
+      image:
+        type: string
+        example: iphone.jpeg
+        description: Image of the product
+      paymenttype:
+        type: string
+        example: card
+        description: Order payment method
+  inline_response_200_3:
+    type: object
+    properties:
+      Order ID:
+        type: integer
+        example: 298
+        description: Order ID
+      Order Item ID:
+        type: integer
+        example: 643
+        description: Product Id
+      Item Total Price:
+        type: number
+        example: 1998.0
+        description: Total price of item
+      Total Order Price:
+        type: number
+        example: 3996.0
+        description: Total price of the order
+  inline_response_200_4:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+        description: Order's ID
+      customer_id:
+        type: integer
+        example: 1
+        description: Customer ID
+      name:
+        type: string
+        example: Iphone
+        description: product Name
+      total_price:
+        type: number
+        example: 999.0
+        description: Total Order Price
+      status:
+        type: integer
+        example: 0
+        description: Status of the order for internal use.
+      order_id:
+        type: integer
+        example: 1
+        description: Order ID
+      quantity:
+        type: integer
+        example: 1
+        description: Quantity
+      price:
+        type: number
+        example: 1.0
+        description: Price of the product
+      paymenttype:
+        type: string
+        example: card
+        description: Order payment method
+  POSTDATA_1:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 33
+        description: Order ID
+      action:
+        type: string
+        example: placeOrdercc
+        description: placeOrdercc
+      cc_money:
+        type: number
+        example: 798.0
+        description: Order amount
+      cc_name:
+        type: string
+        example: S S
+        description: Cardholders name
+      cc_number:
+        type: integer
+        example: 9234123412341234
+        description: cc number
+      cc_exp_mo:
+        type: integer
+        example: 1
+        description: cc expiry month
+      cc_exp_yr:
+        type: integer
+        example: 2018
+        description: cc expiry year
+      cc_cvv:
+        type: integer
+        example: 123
+        description: cc expiry year
+parameters:
+  pathParam:
+    name: type
+    in: path
+    description: json or xml
+    required: true
+    type: string

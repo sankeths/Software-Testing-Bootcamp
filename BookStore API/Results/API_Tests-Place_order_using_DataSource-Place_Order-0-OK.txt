@@ -1,0 +1,54 @@
+Status: OK
+Time Taken: 514
+Size: 94
+Timestamp: Wed Jan 31 14:21:55 IST 2024
+TestStep: Place Order
+
+----------------- Messages ------------------------------
+
+----------------- Properties ------------------------------
+HTTP Version: HTTP/1.1
+Endpoint: https://bookstore.qacurry.com
+Username: student@qacurry.com
+Method: POST
+StatusCode: 200
+URL: https://bookstore.qacurry.com/api/post_order.php?type=json&PHP_AUTH_USER=&PHP_AUTH_PW=
+Password: Q@curry
+
+---------------- Request ---------------------------
+Connection: [Keep-Alive]
+User-Agent: [Apache-HttpClient/4.5.5 (Java/16.0.2)]
+Host: [bookstore.qacurry.com, bookstore.qacurry.com]
+Accept-Encoding: [gzip,deflate, gzip,deflate]
+Content-Length: [50]
+Content-Type: [application/json, application/json]
+
+POST https://bookstore.qacurry.com/api/post_order.php?type=json&PHP_AUTH_USER=&PHP_AUTH_PW= HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: application/json
+Host: bookstore.qacurry.com
+Accept-Encoding: gzip,deflate
+Content-Type: application/json
+Content-Length: 50
+Host: bookstore.qacurry.com
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.5 (Java/16.0.2)
+
+[
+  {
+    "quantity": 1,
+    "product_id": 6
+  }
+]
+
+---------------- Response --------------------------
+date: [Wed, 31 Jan 2024 08:52:10 GMT]
+content-length: [94]
+server: [LiteSpeed]
+keep-alive: [timeout=5, max=100]
+x-powered-by: [PHP/5.6.40]
+x-turbo-charged-by: [LiteSpeed]
+content-type: [application/json]
+#status#: [HTTP/1.1 200 OK]
+
+[{"Order ID":285,"Order Item ID":285,"Item Total Price":"99.00","Total Order Amount":"99.00"}]

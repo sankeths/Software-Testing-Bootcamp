@@ -1,0 +1,17 @@
+
+Place order using DataSource
+
+1. Use the Swagger Rest API - Post Order                        - Done
+2. Add Authentication						- Done
+3. 2 custom Testcase properties - id & price			- Done
+4. Add an assertion for price					- Done
+
+-----------------
+
+Run Datasource Test
+
+1. Create another test which runs the above			- Done
+2. Create an external datafile - csv				- Done
+2. Assign the first dataset to the custom properties		- Done
+3. Put this in a loop						- Done
+4. Bonus Step : Write the results in an external file           - Done
